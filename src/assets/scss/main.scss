@@ -9,12 +9,63 @@
 
 @import "colors";
 @import "flexbox";
+@import "grid";
 
-h1 {
-  background-color: $color-laboratoria;
-}
 
 a {
   text-decoration: none;
   color: #fff;
+}
+.white-text {
+  color: #fff;
+}
+
+%underline {
+    border-bottom: 5px solid $color-laboratoria;
+    display: inline-block;
+    margin-bottom: 35px;
+}
+h1 {
+  @extend %underline;
+
+}
+
+/*
+ hidden and show
+*/
+$breakpoints : (xs : 0, sm : 768px, md : 992px, lg : 1200px );
+
+@mixin column($media, $min-width){
+  @media (min-width:$min-width){
+      .hidden-#{$media}{
+        display: none;
+      }
+      .show-#{$media} {
+        display: block;
+      }
+  }
+}
+@each $name, $width in $breakpoints {
+  @include column($name, $width);
+}
+
+
+/*
+noticia principal
+*/
+#mainNew img {
+  width: 100%;
+}
+#mainNew {
+  position: relative;
+  .box-main {
+    div {
+      padding: 14px 21px;
+      position: absolute;
+      bottom: 21px;
+      h3 {
+        font-size: 2.5em;
+      }
+    }
+  }
 }

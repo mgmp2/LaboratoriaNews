@@ -8,7 +8,8 @@ const render = (root) => {
 		render(root);
 	};
 	wrapper.append(Header(update));
-	// wrapper.append(Board(update));
+	wrapper.append(News(update));
+	wrapper.append(Footer(update));
 	root.append(wrapper);
 
 };

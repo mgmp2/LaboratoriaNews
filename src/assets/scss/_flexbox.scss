@@ -4,7 +4,7 @@
   width: 90%;
   margin: 0 auto;
   margin-top: 28px;
-  @media (max-width:760px) {
+  @media (max-width:768px) {
     width: 90%;
   }
 }
@@ -55,5 +55,13 @@
 
     }
   }
+}
 
+footer {
+  li {
+    list-style-type: none;
+  }
+  & * {
+    color: #000;
+  }
 }

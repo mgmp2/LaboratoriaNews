@@ -1,6 +1,6 @@
 'use strict';
 
-const Header = (update)=> {
+const Header = (update) => {
   const header      = $('<header class="header"></header>');
   const headerTop   = $('<div class="header__top"></div>');
   const menuSearch  = $('<div class="header__top--left"></div>');
