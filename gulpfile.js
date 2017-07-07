@@ -2,12 +2,9 @@ var gulp = require('gulp');
 
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-//agregando gulp-sass
 var sass = require('gulp-sass');
-//agregando dependecias
 var browserify = require('gulp-browserify');
 var rename = require('gulp-rename');
-//agregando modulo requerido
 var browserSync = require('browser-sync').create();
 
 
@@ -21,6 +18,7 @@ var paths = {
   html: "**/*.html",
   img: "img/**",
   js:"js/*.js",
+  carousel: "owlcarousel/**",
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
   mainJS:"js/**/*.js"
@@ -29,9 +27,10 @@ var paths = {
 var sources = {
   assets: config.source + paths.assets,
   html: config.source + paths.html,
-  img: config.source + paths.assets + paths.img,
-  js: config.source + paths.assets +  paths.js,
   sass: config.source + paths.assets + paths.sass,
+  js: config.source + paths.assets +  paths.js,
+  img: config.source + paths.assets + paths.img,
+  carousel: config.source + paths.assets + paths.carousel,
   rootSass: config.source + paths.assets + paths.mainSass,
   rootJS: config.source + paths.assets + paths.mainJS
 };
@@ -58,7 +57,6 @@ gulp.task('js', ()=> {
   gulp.src(sources.rootJS)
     //.pipe(browserify())
     .pipe(concat('app.js'))
-    //.pipe(rename("bundle.js"))
     //.pipe(uglify())
     .pipe(gulp.dest(config.dist + paths.assets + "js"));
 });
@@ -67,9 +65,11 @@ gulp.task('img', ()=> {
   gulp.src(sources.img)
     .pipe(gulp.dest(config.dist + paths.assets + "img"));
 });
+gulp.task('carousel', ()=> {
+  gulp.src(sources.carousel)
+    .pipe(gulp.dest(config.dist + paths.assets + "carousel"));
+});
 
-
-// task 'html-watch'
 gulp.task("html-watch", ["html"], function (done) {
   browserSync.reload();
   done();

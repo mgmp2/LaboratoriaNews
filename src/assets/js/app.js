@@ -23,13 +23,7 @@ const state = {
 
 $( _ => {
 
-	const token = "Abt9DqiGVqIRi5YiudzVES8zdhUbFM4pbUqLpSZEItcfpsA05gAAAAA";
-	const pinterest = "https://api.pinterest.com/v1";
 
-	$.get('api/news', (response) =>{
-	        state.news = response;
-					console.log(response);
-	 });
 
 	//  $.get('api/news/29', (response) =>{
 	// 					console.log(response);
@@ -37,10 +31,7 @@ $( _ => {
  // 	 });
 
 
-	//  $.get('api/categories', (response) =>{
-	// 					console.log(response);
- // 	        state.categories = response;
- // 	 });
+
 
 	//  $.get('api/categories/'+idCat, (response) =>{
 	// 	 			console.log(response);

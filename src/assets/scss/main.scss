@@ -69,3 +69,23 @@ noticia principal
     }
   }
 }
+
+footer {
+  background: $color-laboratoria  ;
+  padding: 35px 42px;
+  img {
+    width: 80%;
+    margin-bottom: 21px;
+  }
+  li {
+    list-style-type: none;
+  }
+  [class*="md-3"] {
+    margin-right: 49px;
+    margin-left: 21px;
+    border-right: 2px solid #fff;
+  }
+  & * {
+    color: #fff;
+  }
+}

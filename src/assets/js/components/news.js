@@ -11,6 +11,27 @@ const News = (update) => {
   // const titleNew = $('<h3 class="white-text">'+state.news[0].title+'</h3>');
   const subt    = $('<p class="white-text hidden-xs show-md">Ya no será necesario ir hasta el campus de MIT para estudiar allá, por medio de su curso gratuito en línea cualquiera podrá hacerlo.</p>');
   // boxDesc.append(titleNew);
+
+  $.get('api/news', (response) =>{
+	        state.news = response;
+          for (let i = 0; i < state.news.length; i++) {
+
+            // const par =  $('<p>'+state.news[i].title+'</p>')
+            // news.append(par);
+          }
+	 });
+   $.get('api/categories', (response) =>{
+         state.categories = response;
+         for (var i = 0; i < state.categories.length; i++) {
+
+           const cat =  $('<section id="'+state.categories[i].title+'"></section>')
+           news.append(cat);
+         }
+   });
+
+
+
+
   boxDesc.append(subt);
   boxNew.append(img);
   boxNew.append(boxDesc);

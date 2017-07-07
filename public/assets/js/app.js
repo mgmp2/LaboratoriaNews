@@ -23,13 +23,7 @@ const state = {
 
 $( _ => {
 
-	const token = "Abt9DqiGVqIRi5YiudzVES8zdhUbFM4pbUqLpSZEItcfpsA05gAAAAA";
-	const pinterest = "https://api.pinterest.com/v1";
 
-	$.get('api/news', (response) =>{
-	        state.news = response;
-					console.log(response);
-	 });
 
 	//  $.get('api/news/29', (response) =>{
 	// 					console.log(response);
@@ -37,10 +31,7 @@ $( _ => {
  // 	 });
 
 
-	//  $.get('api/categories', (response) =>{
-	// 					console.log(response);
- // 	        state.categories = response;
- // 	 });
+
 
 	//  $.get('api/categories/'+idCat, (response) =>{
 	// 	 			console.log(response);
@@ -57,15 +48,15 @@ $( _ => {
 const Footer =  (update) => {
   const footer    = $('<footer></footer>');
   const row       = $('<div class="row"></div>');
-  const colMain   = $('<div class="col md-3"></div>');
+  const colMain   = $('<div class="col xs-12 sm-12 md-3 "></div>');
   const logo      = $('<img src="assets/img/logo-footer.png" alt="laboraotria logo">');
   const firstLine = $('<p>&copy;Editado por Laboratoria</p>');
   const secLine   = $('<p>Av. José Pardo #601 Lima 1 Perú</p>');
   const thirdLine   = $('<p>Copyright &copy; Laboratoria.la</p>');
   const fourthLine  = $('<p>Todos los derechos reservados.</p>');
-  const colSec      = $('<div class="col md-4"></div>');
-
-  const colThird    = $('<div class="col md-5"></div>');
+  const colSec      = $('<div class="col md-3 hidden-xs show-md"></div>');
+  const secDesc     = $('<p>DIRECTOR GENERAL:</p><span>Francisco Miró Quesada Cantuarias</span><p>DIRECTOR PERIODÍSTICO:</p><span>Fernando Berckemeyer Olaechea</span><p>SUSCRIPCIONES:</p><span>suscriptores@comercio.com.pe</span><p>PUBLICIDAD ONLINE:</p><span>fonoavisos@comercio.com.pe</span><p>CLUB EL COMERCIO:</p><span>clubelcomercio@comercio.com.pe</span><p>Compromiso de Autorregulación Comercial</p>');
+  const colThird    = $('<div class="col md-4 hidden-xs show-md"></div>');
   const thirdTop    = $('<div class=""></div>');
   const term        = $('<ul></ul>')
   const thirdBot    = $('<div class=""></div>');
@@ -76,7 +67,7 @@ const Footer =  (update) => {
      term.append(listas);
   }
 
-
+const follow = $('<div class="header__top--right"><span>SÍGUENOS: </span><img src="assets/img/fb.png" alt="facebook"><img src="assets/img/tw.png" alt="twitter"><img src="assets/img/in.png" alt="linkedin"></div>');
 
 
   colMain.append(logo);
@@ -84,9 +75,11 @@ const Footer =  (update) => {
   colMain.append(secLine);
   colMain.append(thirdLine);
   colMain.append(fourthLine);
-
+  colSec.append(secDesc);
   thirdTop.append(term);
+  thirdBot.append(follow);
   colThird.append(thirdTop);
+  colThird.append(thirdBot);
   row.append(colMain);
   row.append(colSec);
   row.append(colThird);
@@ -151,6 +144,27 @@ const News = (update) => {
   // const titleNew = $('<h3 class="white-text">'+state.news[0].title+'</h3>');
   const subt    = $('<p class="white-text hidden-xs show-md">Ya no será necesario ir hasta el campus de MIT para estudiar allá, por medio de su curso gratuito en línea cualquiera podrá hacerlo.</p>');
   // boxDesc.append(titleNew);
+
+  $.get('api/news', (response) =>{
+	        state.news = response;
+          for (let i = 0; i < state.news.length; i++) {
+
+            // const par =  $('<p>'+state.news[i].title+'</p>')
+            // news.append(par);
+          }
+	 });
+   $.get('api/categories', (response) =>{
+         state.categories = response;
+         for (var i = 0; i < state.categories.length; i++) {
+
+           const cat =  $('<section id="'+state.categories[i].title+'"></section>')
+           news.append(cat);
+         }
+   });
+
+
+
+
   boxDesc.append(subt);
   boxNew.append(img);
   boxNew.append(boxDesc);
