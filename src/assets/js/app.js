@@ -7,8 +7,7 @@ const render = (root) => {
 	const update = function() {
 		render(root);
 	};
-  //
-	// wrapper.append(Header(update));
+	wrapper.append(Header(update));
 	// wrapper.append(Board(update));
 	root.append(wrapper);
 
@@ -16,7 +15,9 @@ const render = (root) => {
 
 const state = {
 	news: null,
-	idNews: null
+	idNews: null,
+	categories: null,
+	idCategories: null
 };
 
 $( _ => {
@@ -27,7 +28,24 @@ $( _ => {
 	$.get('api/news', (response) =>{
 	        state.news = response;
 					console.log(response);
-	       });
+	 });
+
+	//  $.get('api/news/29', (response) =>{
+	// 					console.log(response);
+ // 	        state.idNews = response;
+ // 	 });
+
+
+	//  $.get('api/categories', (response) =>{
+	// 					console.log(response);
+ // 	        state.categories = response;
+ // 	 });
+
+	//  $.get('api/categories/'+idCat, (response) =>{
+	// 	 			console.log(response);
+ // 	        state.idCategories = response;
+ // 	 });
+
 
 	const root = $('.root');
 	render(root)

@@ -1,5 +1,75 @@
-.maria {
-  color: black;
-  background: red;
-  border-top: 21px;
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 28px;
+}
+
+@media (max-width: 760px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+
+.header__top {
+  border-bottom: 1px solid #d1d9cd;
+  padding-bottom: 7px;
+}
+
+.header__top, .header__top--left, .header__top--right, .header__center--text, .header__bottom--listas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__top {
+  color: #2B2B2B;
+}
+
+.header__top--left {
+  width: 15%;
+  align-items: baseline;
+}
+
+.header__top--right {
+  width: 7%;
+}
+
+.header__center {
+  text-align: center;
+  padding-top: 28px;
+}
+
+.header__center--text {
+  width: 18%;
+  margin: 21px auto;
+}
+
+.header__bottom {
+  background-color: #F7B617;
+  padding: 14px 0;
+}
+
+.header__bottom--listas {
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 21px;
+}
+
+h1 {
+  background-color: #F7B617;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }
