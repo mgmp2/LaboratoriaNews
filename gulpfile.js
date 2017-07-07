@@ -21,11 +21,6 @@ var paths = {
   html: "**/*.html",
   img: "img/**",
   js:"js/*.js",
-
-  // components: "components/**",
-  // utils: "utils/**",
-
-  css: "css",
   sass: "scss/**/*.scss",
   mainSass: "scss/main.scss",
   mainJS:"js/**/*.js"
@@ -44,7 +39,6 @@ var sources = {
 /*
 tareas independientes
 */
-
 gulp.task('html', ()=> {
   gulp.src(sources.html)
     .pipe(gulp.dest(config.dist));
@@ -74,6 +68,7 @@ gulp.task('img', ()=> {
     .pipe(gulp.dest(config.dist + paths.assets + "img"));
 });
 
+
 // task 'html-watch'
 gulp.task("html-watch", ["html"], function (done) {
   browserSync.reload();
@@ -98,11 +93,11 @@ gulp.task("img-watch", ["img"], function (done) {
 
 
 gulp.task("serve", ()=> {
-  browserSync.init({
-    server: {
-      baseDir: config.dist
-    }
-  });
+  browserSync.init(null, {
+		proxy: "http://localhost:5000",
+        files: ["public/**/*.*"],
+        port: 7000,
+	});
 
   gulp.watch(sources.html, ["html-watch"]);
   gulp.watch(sources.img, ["img-watch"]);

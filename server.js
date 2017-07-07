@@ -4,7 +4,7 @@ const app = express();
 
 app.get('/api/news/', function (req, res) {
     let news = api.news();
-        
+
     news.then( (result) => {
         console.log('Obteniendo noticias\nCantidad de Resultado:' +result.length);
         res.status(200).json(result);
@@ -13,7 +13,7 @@ app.get('/api/news/', function (req, res) {
 
 app.get('/api/news/:news_id', function (req, res) {
     let news = api.news(req.params.news_id);
-        
+
     news.then( (result) => {
         console.log('Obteniendo noticia con id: '+ req.params.news_id + '\nResultado title:' +result.title);
         res.status(200).json(result);
@@ -22,7 +22,7 @@ app.get('/api/news/:news_id', function (req, res) {
 
 app.get('/api/categories/', function (req, res) {
     let categories = api.categories();
-        
+
     categories.then( (result) => {
         console.log('Obteniendo categorias\nCantidad de Resultados:' +result.length);
         res.status(200).json(result);
@@ -44,3 +44,7 @@ app.use('/', express.static('public'));
 app.listen(process.env.PORT || 3000, () => {
     console.log("Iniciando en puerto 3000");
 });
+
+// app.listen(5000, ()=> {
+// console.log("Iniciando en puerto 5000");
+// })
