@@ -61,3 +61,19 @@
     }
   }
 }
+
+// SECONDARY
+.newSec {
+  @extend %display-flex;
+  align-items: flex-start;
+  &__relative {
+    position: relative;
+    &--absolute {
+      padding: 35px 21px;
+      position: absolute;
+      bottom: 0;
+      color: #fff;
+      background-color: #000;
+    }
+  }
+}

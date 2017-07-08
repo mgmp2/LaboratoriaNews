@@ -25,7 +25,7 @@ const News = (update) => {
            if ([i] == 0) { //noticia principal
              const h1   = $('<h1 >LO ÚLTIMO</h1><hr class="show-sm hidden-md">');
              const row     = $('<div class="row"></div>');
-             const rowSec     = $('<div class="row"></div>');
+             const rowSec     = $('<div class="row newSec"></div>');
 
             $.each(state.news, (j) => {
               if (state.news[j].categories[0] == i) {
@@ -49,9 +49,9 @@ const News = (update) => {
 
                   const boxMain   = $('<div class="box-'+state.categories[i].title+' col xs-12 md-4"></div>')
                   const img       = $('<img src="assets/img/news/'+state.news[j].img+'" alt="noticia principal">');
-                  const info      = $('<div class="info"></div>')
-                  const boxTitle  = $('<div class="col xs-12 md-8"></div>');
-                  const title     = $('<h3>'+state.news[j].title+'</h3>');
+                  const info      = $('<div class="newSec__relative"></div>')
+                  const boxTitle  = $('<div class="newSec__relative--absolute"></div>');
+                  const title     = $('<h4>'+state.news[j].title+'</h4>');
 
 
                   boxMain.append(img);
