@@ -153,7 +153,7 @@ const News = (update) => {
            const cat =  $('<section id="'+state.categories[i].title+'"></section>');
 
            if ([i] == 0) { //noticia principal
-             const h1   = $('<h1>LO ÚLTIMO</h1><hr class="show-sm hidden-md">');
+             const h1   = $('<h1 >LO ÚLTIMO</h1><hr class="show-sm hidden-md">');
              const row     = $('<div class="row"></div>');
 
             $.each(state.news, (j) => {
@@ -198,8 +198,11 @@ const News = (update) => {
              const cat =  $('<section id="'+state.categories[i].title+'"></section>');
              news.append(cat);
            }
+
          });
    });
+
+
 
 
   boxDesc.append(subt);
