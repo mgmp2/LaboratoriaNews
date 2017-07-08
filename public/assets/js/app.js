@@ -155,30 +155,48 @@ const News = (update) => {
            if ([i] == 0) { //noticia principal
              const h1   = $('<h1 >LO ÚLTIMO</h1><hr class="show-sm hidden-md">');
              const row     = $('<div class="row"></div>');
+             const rowSec     = $('<div class="row"></div>');
 
             $.each(state.news, (j) => {
               if (state.news[j].categories[0] == i) {
-                const boxMain   = $('<div class="box-'+state.categories[i].title+'"></div>')
-                const img       = $('<img src="assets/img/news/'+state.news[j].img+'" alt="noticia principal">');
-                const info      = $('<div class="info"></div>')
-                const boxTitle  = $('<div class="col xs-12 md-8"></div>');
-                const title     = $('<h3>'+state.news[j].title+'</h3>');
-                const boxParr   = $('<div class="col md-6"></div>');
                 if(state.news[j].brief) {
+                  const boxMain   = $('<div class="box-'+state.categories[i].title+'"></div>')
+                  const img       = $('<img src="assets/img/news/'+state.news[j].img+'" alt="noticia principal">');
+                  const info      = $('<div class="info"></div>')
+                  const boxTitle  = $('<div class="col xs-12 md-8"></div>');
+                  const title     = $('<h3>'+state.news[j].title+'</h3>');
+                  const boxParr   = $('<div class="col md-6"></div>');
                   const parr = $('<p class="hidden-sm">'+state.news[j].brief+'</p>');
                   boxParr.append(parr);
+
+                  boxMain.append(img);
+                  boxTitle.append(title);
+                  info.append(boxTitle);
+                  info.append(boxParr);
+                  boxMain.append(info);
+                  row.append(boxMain);
+                } else {
+
+                  const boxMain   = $('<div class="box-'+state.categories[i].title+' col xs-12 md-4"></div>')
+                  const img       = $('<img src="assets/img/news/'+state.news[j].img+'" alt="noticia principal">');
+                  const info      = $('<div class="info"></div>')
+                  const boxTitle  = $('<div class="col xs-12 md-8"></div>');
+                  const title     = $('<h3>'+state.news[j].title+'</h3>');
+
+
+                  boxMain.append(img);
+                  boxTitle.append(title);
+                  info.append(boxTitle);
+                  boxMain.append(info);
+                  rowSec.append(boxMain);
+
                 }
 
-                boxMain.append(img);
-                boxTitle.append(title);
-                info.append(boxTitle);
-                info.append(boxParr);
-                boxMain.append(info);
-                row.append(boxMain);
               }
             });
 
-             cat.append(row);
+            cat.append(row);
+             cat.append(rowSec);
              cat.prepend(h1);
              news.append(cat);
            }
