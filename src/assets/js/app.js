@@ -33,10 +33,7 @@ $( _ => {
 
 
 
-	//  $.get('api/categories/'+idCat, (response) =>{
-	// 	 			console.log(response);
- // 	        state.idCategories = response;
- // 	 });
+
 
 
 	const root = $('.root');

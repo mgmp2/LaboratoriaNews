@@ -18,7 +18,11 @@
   align-items: center;
 }
 .header {
-  // height: 21px;
+  @media (max-width: 760px) {
+    margin-bottom: 21px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid $color-laboratoria;
+  }
   &__top {
       color: $color-text;
       @extend %border-bottom;
@@ -36,6 +40,7 @@
   &__center {
     text-align: center;
     padding-top: 28px;
+
     &--text {
       @extend %display-flex;
       width: 18%;

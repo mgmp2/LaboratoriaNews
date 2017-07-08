@@ -33,10 +33,7 @@ $( _ => {
 
 
 
-	//  $.get('api/categories/'+idCat, (response) =>{
-	// 	 			console.log(response);
- // 	        state.idCategories = response;
- // 	 });
+
 
 
 	const root = $('.root');
@@ -91,19 +88,19 @@ const follow = $('<div class="header__top--right"><span>SÍGUENOS: </span><img s
 
 const Header = (update) => {
   const header      = $('<header class="header"></header>');
-  const headerTop   = $('<div class="header__top"></div>');
+  const headerTop   = $('<div class="header__top hidden-md"></div>');
   const menuSearch  = $('<div class="header__top--left"></div>');
   const menu        = $('<div><img src="assets/img/menu.png" alt="menu laboratoria"><span>SECTIONS</span></div>');
   const search      = $('<div><img src="assets/img/search.png" alt="menu laboratoria"><span>SEARCH</span></div>');
-  const iconos      = $('<div class="header__top--right"></div>');
+  const iconos      = $('<div class="header__top--right "></div>');
   const fb          = $('<img src="assets/img/fb.png" alt="facebook">');
   const tw          = $('<img src="assets/img/tw.png" alt="twitter">');
   const lk          = $('<img src="assets/img/in.png" alt="linkedin">');
   const headerCent  = $('<div class="header__center"></div>');
   const logo        = $('<img src="assets/img/logoicon.png" alt="laboratoria logo">');
-  const boxDate     = $('<div class="header__center--text">');
+  const boxDate     = $('<div class="header__center--text hidden-sm">');
   const date        = $('<p>Lunes, Junio 12 de 2017  </p><span>  |  </span><img src="assets/img/cloud.png" alt="nube"><p>22°</p>');
-  const headerBot   = $('<div class="header__bottom"></div>');
+  const headerBot   = $('<div class="header__bottom hidden-sm"></div>');
   const boxList     = $('<ul class="header__bottom--listas"></ul>');
 
   let listasArray = ["Lo último", "Opinión", "Cultura", "Perú", "Tecnología", "Mundo", "Economía", "Lifestyle", "Deporte"];
@@ -134,13 +131,11 @@ const Header = (update) => {
 'use strict';
 const News = (update) => {
 
-  const news   = $('<section id="mainNew"></section>');
-  const row     = $('<div class="row"></div>');
+  const news   = $('<section id="box-news"></section>');
   const col     = $('<div class="col xs-12"></div>');
-  const titulo  = $('<h1 class="hidden-sm">LO ÚLTIMO</h1>');
-  const boxNew  = $('<div class="box-main"></div>');
-  const img     = $('<img src="assets/img/news/news-0.png" alt="noticia principal">');
   const boxDesc = $('<div class="col sm-12 md-9"></div>');
+
+
   // const titleNew = $('<h3 class="white-text">'+state.news[0].title+'</h3>');
   const subt    = $('<p class="white-text hidden-xs show-md">Ya no será necesario ir hasta el campus de MIT para estudiar allá, por medio de su curso gratuito en línea cualquiera podrá hacerlo.</p>');
   // boxDesc.append(titleNew);
@@ -148,29 +143,66 @@ const News = (update) => {
   $.get('api/news', (response) =>{
 	        state.news = response;
           for (let i = 0; i < state.news.length; i++) {
-
             // const par =  $('<p>'+state.news[i].title+'</p>')
             // news.append(par);
           }
 	 });
    $.get('api/categories', (response) =>{
          state.categories = response;
-         for (var i = 0; i < state.categories.length; i++) {
+         $.each(state.categories, (i)=>  {
+           const cat =  $('<section id="'+state.categories[i].title+'"></section>');
 
-           const cat =  $('<section id="'+state.categories[i].title+'"></section>')
-           news.append(cat);
-         }
+           if ([i] == 0) { //noticia principal
+             const h1   = $('<h1>LO ÚLTIMO</h1><hr class="show-sm hidden-md">');
+             const row     = $('<div class="row"></div>');
+
+            $.each(state.news, (j) => {
+              if (state.news[j].categories[0] == i) {
+                const boxMain   = $('<div class="box-'+state.categories[i].title+'"></div>')
+                const img       = $('<img src="assets/img/news/'+state.news[j].img+'" alt="noticia principal">');
+                const info      = $('<div class="info"></div>')
+                const boxTitle  = $('<div class="col xs-12 md-8"></div>');
+                const title     = $('<h3>'+state.news[j].title+'</h3>');
+                const boxParr   = $('<div class="col md-6"></div>');
+                if(state.news[j].brief) {
+                  const parr = $('<p class="hidden-sm">'+state.news[j].brief+'</p>');
+                  boxParr.append(parr);
+                }
+
+                boxMain.append(img);
+                boxTitle.append(title);
+                info.append(boxTitle);
+                info.append(boxParr);
+                boxMain.append(info);
+                row.append(boxMain);
+              }
+            });
+
+             cat.append(row);
+             cat.prepend(h1);
+             news.append(cat);
+           }
+          //  OTRAS CATEGORIAS
+           else if([i]>=1 && [i] <5) {
+             const cat =  $('<section id="'+state.categories[i].title+'"></section>');
+             const h1   = $('<h1>'+state.categories[i].title+'</h1><hr>');
+             const row     = $('<div class="row"></div>');
+
+             row.append(h1);
+             cat.append(row);
+             news.append(cat);
+
+            //  CARROUSEL
+
+           } else {
+             const cat =  $('<section id="'+state.categories[i].title+'"></section>');
+             news.append(cat);
+           }
+         });
    });
 
 
-
-
   boxDesc.append(subt);
-  boxNew.append(img);
-  boxNew.append(boxDesc);
-  col.append(titulo);
-  col.append(boxNew);
-  row.append(col);
-  news.append(row);
+
   return news;
 }

@@ -1,40 +1,33 @@
 {
-  "name": "lab-news",
+  "name": "laboratorianews",
   "version": "1.0.0",
-  "description": "Laboratoria news.",
-  "main": "server.js",
-  "scripts": {
-    "test": "test",
-    "start": "node server.js"
-  },
-  "author": "Miriam Mendoza",
-  "license": "ISC",
+  "description": "Laboratoria news es un grupo conformado por gente comprometida y talentosa. La misión es servir al país entregando información, entretenimiento y educación a través de contenidos de primera calidad.\r   ## OBJETIVO \r   ```\r   - Se tiene que replicar el diseño con las secciones\r   - Debe de contar con las funcionalidades: carousel y botón de footer\r   - La página web tiene que ser responsive: desktop y mobile\r   - Debes obtener las noticias desde los endopoints indicados\r   - Tienes que hacer uso de componentes\r   - Tienes que usar SASS para los estilos\r   - Debes automatizar tus tareas (GULP)\r   ```\r   ##  Recursos Utilizados\r   ```\r   - API \r   - COMPONENTES\r   - SASS\r   - GULP\r   - GRILLAS\r   - JS\r   - NODE.JS\r   - HTML",
+  "main": "gulpfile.js",
   "dependencies": {
-    "express": "^4.15.3",
-    "firebase": "^4.1.3"
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "firebase": "^4.1.3",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mgmp2/LaboratoriaNews.git"
   },
-  "keywords": [
-    "sass",
-    "componentes",
-    "gulp",
-    "api"
-  ],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/mgmp2/LaboratoriaNews/issues"
   },
-  "homepage": "https://github.com/mgmp2/LaboratoriaNews#readme",
-  "devDependencies": {
-    "browser-sync": "^2.18.12",
-    "gulp": "^3.9.1",
-    "gulp-browserify": "^0.5.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-nodemon": "^2.2.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^3.0.0"
-  }
+  "homepage": "https://github.com/mgmp2/LaboratoriaNews#readme"
 }

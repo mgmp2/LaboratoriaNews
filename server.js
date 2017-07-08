@@ -41,10 +41,6 @@ app.get('/api/categories/:category_id', function (req, res) {
 app.use('/', express.static('public'));
 
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log("Iniciando en puerto 3000");
+app.listen(process.env.PORT || 5000, () => {
+    console.log("Iniciando en puerto 5000");
 });
-
-// app.listen(5000, ()=> {
-// console.log("Iniciando en puerto 5000");
-// })

@@ -1,4 +1,3 @@
-
 var firebase = require("firebase");
 
 const config = {
@@ -15,15 +14,15 @@ firebase.initializeApp(config);
 
 var loadNews = (id) => {
     let url = '/news/';
-    url += (id != undefined) ? id : '';  
+    url += (id != undefined) ? id : '';
     return firebase.database().ref(url).once('value').then(function(snapshot) {
     return snapshot.val();
     });
 };
 
 var loadCategories = (id) => {
-    let url = '/categories/'; 
-    url += (id != undefined) ? id : '';  
+    let url = '/categories/';
+    url += (id != undefined) ? id : '';
     return firebase.database().ref(url).once('value').then(function(snapshot) {
         return snapshot.val();
     });
