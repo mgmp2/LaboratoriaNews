@@ -66,6 +66,7 @@
 .newSec {
   @extend %display-flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   &__relative {
     position: relative;
     &--absolute {

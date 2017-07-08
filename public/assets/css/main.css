@@ -393,6 +393,7 @@
 
 .newSec {
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .newSec__relative {
